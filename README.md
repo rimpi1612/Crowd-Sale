@@ -48,7 +48,7 @@ We will need to bootstrap the contract by inheriting the following OpenZeppelin 
 
 * `RefundablePostDeliveryCrowdsale`
 
-We will need to provide parameters for all of the features of our crowdsale, such as the `name`, `symbol`, `wallet` for fundraising, `goal`, etc. Feel free to configure these parameters to our liking.
+We will need to provide parameters for all of the features of our crowdsale, such as the `name`, `symbol`, `wallet` for fundraising, `goal`, etc. 
 
 We can hardcode a `rate` of 1, to maintain parity with Ether units (1 TKN per Ether, or 1 TKNbit per wei). If we'd like to customize our crowdsale rate, follow the [Crowdsale Rate](https://docs.openzeppelin.com/contracts/2.x/crowdsales#crowdsale-rate) calculator on OpenZeppelin's documentation. Essentially, a token (TKN) can be divided into TKNbits just like Ether can be divided into wei. When using a `rate` of 1, just like 1000000000000000000 wei is equal to 1 Ether, 1000000000000000000 TKNbits is equal to 1 TKN.
 
@@ -57,24 +57,6 @@ Since `RefundablePostDeliveryCrowdsale` inherits the `RefundableCrowdsale` contr
 If we forget to call the `RefundableCrowdsale` constructor, the `RefundablePostDeliveryCrowdsale` will fail since it relies on it (it inherits from `RefundableCrowdsale`), and does not have its own constructor.
 
 When passing the `open` and `close` times, use `now` and `now + 24 weeks` to set the times properly from our `PupperCoinCrowdsaleDeployer` contract.
-
-#### PupperCoinCrowdsaleDeployer
-
-In this contract, we will model the deployment based off of the `ArcadeTokenCrowdsaleDeployer` we built previously. Leverage the [OpenZeppelin Crowdsale Documentation](https://docs.openzeppelin.com/contracts/2.x/crowdsales) for an example of a contract deploying another, as well as the starter code provided in [Crowdsale.sol](Code/Crowdsale.sol).
-
-### Testing the Crowdsale
-
-Test the crowdsale by sending Ether to the crowdsale from a different account (**not** the same account that is raising funds), then once we confirm that the crowdsale works as expected, try to add the token to MyCrypto and test a transaction. we can test the time functionality by replacing `now` with `fakenow`, and creating a setter function to modify `fakenow` to whatever time we want to simulate. we can also set the `close` time to be `now + 5 minutes`, or whatever timeline we'd like to test for a shorter crowdsale.
-
-When sending Ether to the contract, make sure we hit our `goal` that we set, and `finalize` the sale using the `Crowdsale`'s `finalize` function. In order to finalize, `isOpen` must return false (`isOpen` comes from `TimedCrowdsale` which checks to see if the `close` time has passed yet). Since the `goal` is 300 Ether, we may need to send from multiple accounts. If we run out of prefunded accounts in Ganache, we can create a new workspace.
-
-Remember, the refund feature of `RefundablePostDeliveryCrowdsale` only allows for refunds once the crowdsale is closed **and** the goal is met. See the [OpenZeppelin RefundableCrowdsale](https://docs.openzeppelin.com/contracts/2.x/api/crowdsale#RefundableCrowdsale) documentation for details as to why this is logic is used to prevent potential attacks on our token's value.
-
-we can add custom tokens in MyCrypto from the `Add custom token` feature:
-
-![add-custom-token](https://i.imgur.com/p1wwXQ9.png)
-
-we can also do the same for MetaMask. Make sure to purchase higher amounts of tokens in order to see the denomination appear in our wallets as more than a few wei worth.
 
 ### Deploying the Crowdsale
 
