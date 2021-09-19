@@ -58,6 +58,26 @@ If we forget to call the `RefundableCrowdsale` constructor, the `RefundablePostD
 
 When passing the `open` and `close` times, use `now` and `now + 24 weeks` to set the times properly from our `PupperCoinCrowdsaleDeployer` contract.
 
+
 ### Deploying the Crowdsale
 
-Deploy the crowdsale to the Kovan or Ropsten testnet, and store the deployed address for later. Switch MetaMask to our desired network, and use the `Deploy` tab in Remix to deploy our contracts. Take note of the total gas cost, and compare it to how costly it would be in reality. Since we are deploying to a network that we don't have control over, faucets will not likely give out 300 test Ether. we can simply reduce the goal when deploying to a testnet to an amount much smaller, like 10,000 wei.
+Deploy the crowdsale to the Ropsten testnet, and store the deployed address for later. Switch MetaMask to our desired network, and use the `Deploy` tab in Remix to deploy our contracts. Take note of the total gas cost, and compare it to how costly it would be in reality. Since we are deploying to a network that we don't have control over, faucets will not likely give out 300 test Ether. we can simply reduce the goal when deploying to a testnet to an amount much smaller, like 10,000 wei.
+
+
+### Testing the Crowdsale
+
+Test the crowdsale by sending Ether to the crowdsale from a different account 
+
+![crowd1](Images/PupperCoin_1.png)
+
+![crowd2](Images/PupperCoin_3.png)
+
+![crowd3](Images/PupperCoin_3.png)
+
+![crowd4](Images/PupperCoinSaleDeployer.png)
+
+![crowd5](Images/Deployer.png)
+
+![crowd6](Images/CoinSale.png)
+
+![crowd7](Images/buyToken.png)
