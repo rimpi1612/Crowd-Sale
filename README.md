@@ -70,7 +70,7 @@ Test the crowdsale by sending Ether to the crowdsale from a different account
 
 ![crowd1](Images/PupperCoin_1.png)
 
-![crowd2](Images/PupperCoin_3.png)
+![crowd2](Images/pupperCoin_2.png)
 
 ![crowd3](Images/PupperCoin_3.png)
 
